@@ -8,12 +8,12 @@ function getData() {
     dataType: "json",
     success: function (data) {
       phaseData = data;
-      generateHtmlTable(data);
+      generateHtmlTable(data, $('#csv-display'));
     }
   });
 }
 
-function generateHtmlTable(data) {
+function generateHtmlTable(data, element) {
   var html = '<table  class="table table-condensed table-hover table-striped">';
 
   if (typeof (data[0]) === 'undefined') {
@@ -31,7 +31,7 @@ function generateHtmlTable(data) {
     });
     html += '</tbody>';
     html += '</table>';
-    $('#csv-display').append(html);
+    element.html(html);
   }
 }
 
@@ -46,6 +46,7 @@ function generateDefault() {
   });
   // alert(randomTenPhases.map(function(p) {return p.Rank;}));
   console.log(randomTenPhases);
+  generateHtmlTable(randomTenPhases, $('#generator-result'))
 }
 
 function getPhaseByRank(rank) {
@@ -54,6 +55,10 @@ function getPhaseByRank(rank) {
   });
   console.log(filterElement.length);
   return filterElement[0];
+}
+
+function generatePhaseTable(){
+
 }
 
 getData();
