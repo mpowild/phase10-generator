@@ -44,21 +44,48 @@ function generateDefault() {
   randomTenPhases.sort(function (a, b) {
     return a.Rank - b.Rank;
   });
-  // alert(randomTenPhases.map(function(p) {return p.Rank;}));
-  console.log(randomTenPhases);
   generateHtmlTable(randomTenPhases, $('#generator-result'))
+
+  $.each(randomTenPhases, function (index, phase) {
+    console.log(generatePhaseSentence(phase));
+
+  });
 }
 
 function getPhaseByRank(rank) {
   let filterElement = phaseData.filter(function (phase) {
     return phase.Rank == rank;
   });
-  console.log(filterElement.length);
   return filterElement[0];
 }
 
-function generatePhaseTable(){
+function generatePhaseSentence(phase) {
+  var sentence = generateGoalSentence(phase.Type1, phase.Count1);
 
+  if (phase.Type2 != undefined) {
+    sentence = sentence + "; " + generateGoalSentence(phase.Type2,
+        phase.Count2);
+  }
+
+  return sentence;
+}
+
+function generateGoalSentence(type, count) {
+  var sentence = "";
+  if (type === 'S') {
+    sentence = "Set of ";
+  }
+  if (type === 'R' || type === 'CR') {
+    sentence = "Run of ";
+  }
+  sentence += count;
+  if (type === 'E' || type === 'CE') {
+    sentence += " even cards";
+  }
+  if (type === 'C' || type === 'CR' || type === 'CE') {
+    sentence += " of the same colour";
+  }
+  return sentence;
 }
 
 getData();
