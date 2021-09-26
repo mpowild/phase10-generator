@@ -14,7 +14,7 @@ function getData() {
 }
 
 function generateHtmlTable(data, element) {
-  var html = '<table  class="table table-condensed table-hover table-striped">';
+  var html = '<table class="table table-condensed table-hover table-striped">';
 
   if (typeof (data[0]) === 'undefined') {
     return null;
@@ -35,21 +35,23 @@ function generateHtmlTable(data, element) {
   }
 }
 
+function generateRandom(length) {
+  return Math.floor(Math.random() * length) + 1;
+}
+
 function generateDefault() {
   var randomTenPhases = [];
+
   for (let i = 0; i < 10; i++) {
-    var randomNumber = Math.floor(Math.random() * phaseData.length) + 1;
+    var randomNumber = generateRandom(phaseData.length);
     randomTenPhases[i] = getPhaseByRank(randomNumber);
   }
   randomTenPhases.sort(function (a, b) {
     return a.Rank - b.Rank;
   });
-  generateHtmlTable(randomTenPhases, $('#generator-result'))
-
-  $.each(randomTenPhases, function (index, phase) {
-    console.log(generatePhaseSentence(phase));
-
-  });
+  generateHtmlTable(randomTenPhases.map(function (phase) {
+    return [generatePhaseSentence(phase)];
+  }), $('#generator-result'))
 }
 
 function getPhaseByRank(rank) {
@@ -80,7 +82,11 @@ function generateGoalSentence(type, count) {
   }
   sentence += count;
   if (type === 'E' || type === 'CE') {
-    sentence += " even cards";
+    if (generateRandom(2) === 1) {
+      sentence += " even cards";
+    } else {
+      sentence += " odd cards";
+    }
   }
   if (type === 'C' || type === 'CR' || type === 'CE') {
     sentence += " of the same colour";
