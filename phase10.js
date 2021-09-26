@@ -8,7 +8,7 @@ function getData() {
     dataType: "json",
     success: function (data) {
       phaseData = data;
-      generateHtmlTable(data, $('#csv-display'));
+      // generateHtmlTable(data, $('#csv-display'));
     }
   });
 }
