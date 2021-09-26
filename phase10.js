@@ -39,6 +39,14 @@ function generateHtmlTable(data) {
 
 
 function generateDefault(){
+  var randomTenNumbers = [];
+  for(let i = 0; i < 10; i++){
+    var randomNumber = Math.floor(Math.random() * phaseData.length) + 1;
+    randomTenNumbers[i] = randomNumber;
+  }
+  randomTenNumbers.sort(function(a,b){return a-b});
+  alert(randomTenNumbers);
+
 
 }
 
