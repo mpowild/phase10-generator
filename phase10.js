@@ -1,12 +1,14 @@
+var phaseData;
+
 function getData (){
 
-  var data;
   $.ajax({
     type: "GET",
     url: "phase10_data.json",
     dataType: "json",
     success: function(data)
     {
+      phaseData = data;
       generateHtmlTable(data);
     }
   });
@@ -34,4 +36,11 @@ function generateHtmlTable(data) {
   }
 }
 
+
+
+function generateDefault(){
+
+}
+
 getData();
+
