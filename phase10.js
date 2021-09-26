@@ -3,11 +3,10 @@ function getData (){
   var data;
   $.ajax({
     type: "GET",
-    url: "phase10_data.csv",
-    dataType: "text",
-    success: function(response)
+    url: "phase10_data.json",
+    dataType: "json",
+    success: function(data)
     {
-      data = $.csv.toArrays(response);
       generateHtmlTable(data);
     }
   });
@@ -21,26 +20,13 @@ function generateHtmlTable(data) {
   } else {
     $.each(data, function( index, row ) {
       //bind header
-      if(index == 0) {
-        html += '<thead>';
-        html += '<tr>';
-        $.each(row, function( index, colData ) {
-          html += '<th>';
-          html += colData;
-          html += '</th>';
-        });
-        html += '</tr>';
-        html += '</thead>';
-        html += '<tbody>';
-      } else {
-        html += '<tr>';
-        $.each(row, function( index, colData ) {
-          html += '<td>';
-          html += colData;
-          html += '</td>';
-        });
-        html += '</tr>';
-      }
+      html += '<tr>';
+      $.each(row, function (index, colData) {
+        html += '<td>';
+        html += colData;
+        html += '</td>';
+      });
+      html += '</tr>';
     });
     html += '</tbody>';
     html += '</table>';
