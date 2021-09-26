@@ -39,15 +39,18 @@ function generateHtmlTable(data) {
 
 
 function generateDefault(){
-  var randomTenNumbers = [];
+  var randomTenPhases = [];
   for(let i = 0; i < 10; i++){
     var randomNumber = Math.floor(Math.random() * phaseData.length) + 1;
-    randomTenNumbers[i] = randomNumber;
-  }
-  randomTenNumbers.sort(function(a,b){return a-b});
-  alert(randomTenNumbers);
+    randomTenPhases[i] = getPhaseByRank(randomNumber);
+    }
+  randomTenPhases.sort(function(a,b){return a-b});
 
 
+}
+
+function getPhaseByRank(rank){
+  return phaseData.filter(function(phase){return phase.Rank === rank;})[0];
 }
 
 getData();
