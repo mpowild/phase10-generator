@@ -1,0 +1,32 @@
+#generator-result {
+  background-color: cornflowerblue;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+ol {
+  text-align: center;
+}
+
+li {
+}
+
+div.goal {
+  border: coral 2px solid;
+  width: 30%;
+  display: inline-block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  vertical-align: middle;
+  min-height: 2.5rem;
+  position: relative;
+  border-radius: 10px;
+}
+
+div.goal div.goal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}

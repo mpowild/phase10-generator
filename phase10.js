@@ -9,24 +9,21 @@ function getData() {
   });
 }
 
-function generateHtmlTable(data, element) {
-  var html = '<table class="table table-condensed table-hover table-striped">';
+function presentResult(data, element) {
+  var html = '<ol>';
 
   if (typeof (data[0]) === 'undefined') {
     return null;
   } else {
-    $.each(data, (index, row) => {
-      //bind header
-      html += '<tr>';
-      $.each(row, (index, colData) => {
-        html += '<td>';
-        html += colData;
-        html += '</td>';
+    $.each(data, (index, phase) => {
+      html += '<li>';
+      $.each(phase, (index, goal) => {
+        html += `<div class="goal"><div class="goal-content">${goal}</div></div>`
       });
-      html += '</tr>';
+      html += '</li>';
     });
-    html += '</tbody>';
-    html += '</table>';
+
+    html += '</ol>';
     element.html(html);
   }
 }
@@ -52,8 +49,8 @@ function generateDefault() {
   var randomTenPhases = getUniqueRandomPhases();
   randomTenPhases.sort((a, b) => a.Rank - b.Rank);
 
-  generateHtmlTable(
-      randomTenPhases.map(phase => [generatePhaseSentence(phase)]),
+  presentResult(
+      randomTenPhases.map(phase => generatePhaseSentence(phase)),
       $('#generator-result'))
 }
 
@@ -62,11 +59,11 @@ function getPhaseByRank(rank) {
 }
 
 function generatePhaseSentence(phase) {
-  var sentence = generateGoalSentence(phase.Type1, phase.Count1);
+  var sentence = [];
+  sentence[0] = generateGoalSentence(phase.Type1, phase.Count1);
 
   if (phase.Type2 != null) {
-    sentence = sentence + "; " + generateGoalSentence(phase.Type2,
-        phase.Count2);
+    sentence[1] = generateGoalSentence(phase.Type2, phase.Count2);
   }
 
   return sentence;
