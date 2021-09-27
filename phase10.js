@@ -8,7 +8,6 @@ function getData() {
     dataType: "json",
     success: function (data) {
       phaseData = data;
-      // generateHtmlTable(data, $('#csv-display'));
     }
   });
 }
@@ -39,13 +38,23 @@ function generateRandom(length) {
   return Math.floor(Math.random() * length) + 1;
 }
 
-function generateDefault() {
-  var randomTenPhases = [];
+function getUniqueRandomPhases(numberOfPhases = 10) {
+  var randomTenNumbers = [];
 
-  for (let i = 0; i < 10; i++) {
-    var randomNumber = generateRandom(phaseData.length);
-    randomTenPhases[i] = getPhaseByRank(randomNumber);
+  while (randomTenNumbers.length < numberOfPhases) {
+    var num = generateRandom(phaseData.length);
+    if (randomTenNumbers.indexOf(num) === -1) {
+      randomTenNumbers.push(num);
+    }
   }
+
+  return randomTenNumbers.map(function (num) {
+    return getPhaseByRank(num);
+  });
+}
+
+function generateDefault() {
+  var randomTenPhases = getUniqueRandomPhases();
   randomTenPhases.sort(function (a, b) {
     return a.Rank - b.Rank;
   });
