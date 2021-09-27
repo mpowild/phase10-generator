@@ -77,16 +77,16 @@ function generateGoalSentence(type, count) {
   if (type === 'R' || type === 'CR') {
     sentence = "Run of ";
   }
-  sentence += count;
+  sentence += `<span class="goal-count">${count}</span>`;
   if (type === 'E' || type === 'CE') {
     if (generateRandom(2) === 1) {
-      sentence += " even cards";
+      sentence += " evens";
     } else {
-      sentence += " odd cards";
+      sentence += " odds";
     }
   }
   if (type === 'C' || type === 'CR' || type === 'CE') {
-    sentence += " of the same colour";
+    sentence += " of one colour";
   }
   return sentence;
 }
