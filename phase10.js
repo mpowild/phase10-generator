@@ -5,9 +5,7 @@ function getData() {
     type: "GET",
     url: "phase10_data.json",
     dataType: "json",
-    success: data => {
-      phaseData = data;
-    }
+    success: data => phaseData = data
   });
 }
 
@@ -38,16 +36,16 @@ function generateRandom(length) {
 }
 
 function getUniqueRandomPhases(numberOfPhases = 10) {
-  var randomTenNumbers = [];
+  var randomNumbers = [];
 
-  while (randomTenNumbers.length < numberOfPhases) {
+  while (randomNumbers.length < numberOfPhases) {
     var num = generateRandom(phaseData.length);
-    if (randomTenNumbers.indexOf(num) === -1) {
-      randomTenNumbers.push(num);
+    if (randomNumbers.indexOf(num) === -1) {
+      randomNumbers.push(num);
     }
   }
 
-  return randomTenNumbers.map(num => getPhaseByRank(num));
+  return randomNumbers.map(num => getPhaseByRank(num));
 }
 
 function generateDefault() {
