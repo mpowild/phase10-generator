@@ -1,4 +1,4 @@
-var phaseData;
+let phaseData;
 
 function getData() {
   $.ajax({
@@ -10,7 +10,7 @@ function getData() {
 }
 
 function presentResult(data, element) {
-  var html = '<ol>';
+  let html = '<ol>';
 
   if (typeof (data[0]) === 'undefined') {
     return null;
@@ -33,10 +33,10 @@ function generateRandom(length) {
 }
 
 function getUniqueRandomPhases(numberOfPhases = 10) {
-  var randomNumbers = [];
+  let randomNumbers = [];
 
   while (randomNumbers.length < numberOfPhases) {
-    var num = generateRandom(phaseData.length);
+    let num = generateRandom(phaseData.length);
     if (randomNumbers.indexOf(num) === -1) {
       randomNumbers.push(num);
     }
@@ -46,7 +46,7 @@ function getUniqueRandomPhases(numberOfPhases = 10) {
 }
 
 function generateDefault() {
-  var randomTenPhases = getUniqueRandomPhases();
+  let randomTenPhases = getUniqueRandomPhases();
   randomTenPhases.sort((a, b) => a.Rank - b.Rank);
 
   presentResult(
@@ -59,7 +59,7 @@ function getPhaseByRank(rank) {
 }
 
 function generatePhaseSentence(phase) {
-  var sentence = [];
+  let sentence = [];
   sentence[0] = generateGoalSentence(phase.Type1, phase.Count1);
 
   if (phase.Type2 != null) {
@@ -70,7 +70,7 @@ function generatePhaseSentence(phase) {
 }
 
 function generateGoalSentence(type, count) {
-  var sentence = "";
+  let sentence = "";
   if (type === 'S') {
     sentence = "Set of ";
   }
@@ -92,4 +92,3 @@ function generateGoalSentence(type, count) {
 }
 
 getData();
-
