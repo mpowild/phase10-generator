@@ -60,8 +60,7 @@ function generateDefault() {
 }
 
 function getPhaseByRank(rank) {
-  let filterElement = phaseData.filter(phase => phase.Rank === rank);
-  return filterElement[0];
+  return phaseData.find(phase => phase.Rank === rank);
 }
 
 function generatePhaseSentence(phase) {
