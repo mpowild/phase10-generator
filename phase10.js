@@ -1,12 +1,11 @@
 var phaseData;
 
 function getData() {
-
   $.ajax({
     type: "GET",
     url: "phase10_data.json",
     dataType: "json",
-    success: function (data) {
+    success: data => {
       phaseData = data;
     }
   });
@@ -18,10 +17,10 @@ function generateHtmlTable(data, element) {
   if (typeof (data[0]) === 'undefined') {
     return null;
   } else {
-    $.each(data, function (index, row) {
+    $.each(data, (index, row) => {
       //bind header
       html += '<tr>';
-      $.each(row, function (index, colData) {
+      $.each(row, (index, colData) => {
         html += '<td>';
         html += colData;
         html += '</td>';
@@ -48,25 +47,20 @@ function getUniqueRandomPhases(numberOfPhases = 10) {
     }
   }
 
-  return randomTenNumbers.map(function (num) {
-    return getPhaseByRank(num);
-  });
+  return randomTenNumbers.map(num => getPhaseByRank(num));
 }
 
 function generateDefault() {
   var randomTenPhases = getUniqueRandomPhases();
-  randomTenPhases.sort(function (a, b) {
-    return a.Rank - b.Rank;
-  });
-  generateHtmlTable(randomTenPhases.map(function (phase) {
-    return [generatePhaseSentence(phase)];
-  }), $('#generator-result'))
+  randomTenPhases.sort((a, b) => a.Rank - b.Rank);
+
+  generateHtmlTable(
+      randomTenPhases.map(phase => [generatePhaseSentence(phase)]),
+      $('#generator-result'))
 }
 
 function getPhaseByRank(rank) {
-  let filterElement = phaseData.filter(function (phase) {
-    return phase.Rank == rank;
-  });
+  let filterElement = phaseData.filter(phase => phase.Rank == rank);
   return filterElement[0];
 }
 
