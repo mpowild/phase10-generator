@@ -1,15 +1,11 @@
 var phaseData;
 
 function getData() {
-
   $.ajax({
     type: "GET",
     url: "phase10_data.json",
     dataType: "json",
-    success: function (data) {
-      phaseData = data;
-      // generateHtmlTable(data, $('#csv-display'));
-    }
+    success: data => phaseData = data
   });
 }
 
@@ -19,10 +15,10 @@ function generateHtmlTable(data, element) {
   if (typeof (data[0]) === 'undefined') {
     return null;
   } else {
-    $.each(data, function (index, row) {
+    $.each(data, (index, row) => {
       //bind header
       html += '<tr>';
-      $.each(row, function (index, colData) {
+      $.each(row, (index, colData) => {
         html += '<td>';
         html += colData;
         html += '</td>';
@@ -39,32 +35,36 @@ function generateRandom(length) {
   return Math.floor(Math.random() * length) + 1;
 }
 
-function generateDefault() {
-  var randomTenPhases = [];
+function getUniqueRandomPhases(numberOfPhases = 10) {
+  var randomNumbers = [];
 
-  for (let i = 0; i < 10; i++) {
-    var randomNumber = generateRandom(phaseData.length);
-    randomTenPhases[i] = getPhaseByRank(randomNumber);
+  while (randomNumbers.length < numberOfPhases) {
+    var num = generateRandom(phaseData.length);
+    if (randomNumbers.indexOf(num) === -1) {
+      randomNumbers.push(num);
+    }
   }
-  randomTenPhases.sort(function (a, b) {
-    return a.Rank - b.Rank;
-  });
-  generateHtmlTable(randomTenPhases.map(function (phase) {
-    return [generatePhaseSentence(phase)];
-  }), $('#generator-result'))
+
+  return randomNumbers.map(num => getPhaseByRank(num));
+}
+
+function generateDefault() {
+  var randomTenPhases = getUniqueRandomPhases();
+  randomTenPhases.sort((a, b) => a.Rank - b.Rank);
+
+  generateHtmlTable(
+      randomTenPhases.map(phase => [generatePhaseSentence(phase)]),
+      $('#generator-result'))
 }
 
 function getPhaseByRank(rank) {
-  let filterElement = phaseData.filter(function (phase) {
-    return phase.Rank == rank;
-  });
-  return filterElement[0];
+  return phaseData.find(phase => phase.Rank === rank);
 }
 
 function generatePhaseSentence(phase) {
   var sentence = generateGoalSentence(phase.Type1, phase.Count1);
 
-  if (phase.Type2 != undefined) {
+  if (phase.Type2 != null) {
     sentence = sentence + "; " + generateGoalSentence(phase.Type2,
         phase.Count2);
   }
