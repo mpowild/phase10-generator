@@ -60,14 +60,14 @@ function generateDefault() {
 }
 
 function getPhaseByRank(rank) {
-  let filterElement = phaseData.filter(phase => phase.Rank == rank);
+  let filterElement = phaseData.filter(phase => phase.Rank === rank);
   return filterElement[0];
 }
 
 function generatePhaseSentence(phase) {
   var sentence = generateGoalSentence(phase.Type1, phase.Count1);
 
-  if (phase.Type2 != undefined) {
+  if (phase.Type2 != null) {
     sentence = sentence + "; " + generateGoalSentence(phase.Type2,
         phase.Count2);
   }
