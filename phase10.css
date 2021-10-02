@@ -1,46 +1,9 @@
 body {
-  font-family: sans-serif;
-}
-
-div.header, div.footer {
   text-align: center;
-}
-
-button {
-  font-size: 120%;
-  padding: 0.5rem 1.5rem;
-  border: 2px solid black;
-  background-color: dodgerblue;
-  color: white;
-  border-radius: 10px;
-}
-
-button:hover {
-  background-color: rebeccapurple;
-}
-
-div.header {
-  margin-bottom: 2rem;
-}
-
-div.footer {
-  margin-top: 2rem;
-}
-
-.results {
-  max-width: 40rem;
-  margin: 0 auto;
-}
-
-ol {
-  text-align: center;
-}
-
-li {
 }
 
 div.goal {
-  border: dodgerblue 2px solid;
+  border: #3389cc 2px solid;
   width: 30%;
   display: inline-block;
   padding: 0.5rem;
@@ -48,7 +11,6 @@ div.goal {
   vertical-align: middle;
   min-height: 2.5rem;
   position: relative;
-  border-radius: 10px;
 }
 
 div.goal div.goal-content {
@@ -62,4 +24,6 @@ div.goal div.goal-content {
 span.goal-count {
   font-weight: bold;
   color: red;
+  font-size: 120%;
+  -webkit-text-stroke: 0.5px black;
 }

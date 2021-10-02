@@ -25,7 +25,7 @@ function presentResult(data, element) {
     $.each(data, (index, phase) => {
       html += '<li>';
       $.each(phase, (index, goal) => {
-        html += `<div class="goal"><div class="goal-content">${goal}</div></div>`
+        html += `<div class="goal ui-corner-all"><div class="goal-content">${goal}</div></div>`
       });
       html += '</li>';
     });
