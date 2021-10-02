@@ -6,13 +6,17 @@ div.header, div.footer {
   text-align: center;
 }
 
-button#generate-phases {
+button {
   font-size: 120%;
   padding: 0.5rem 1.5rem;
   border: 2px solid black;
   background-color: dodgerblue;
   color: white;
   border-radius: 10px;
+}
+
+button:hover {
+  background-color: rebeccapurple;
 }
 
 div.header {
@@ -23,7 +27,7 @@ div.footer {
   margin-top: 2rem;
 }
 
-#generator-result {
+.results {
   max-width: 40rem;
   margin: 0 auto;
 }
