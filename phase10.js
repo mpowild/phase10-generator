@@ -1,4 +1,5 @@
 let phaseData;
+let classicPhases;
 
 function getData() {
   $.ajax({
@@ -6,6 +7,12 @@ function getData() {
     url: "phase10_data.json",
     dataType: "json",
     success: data => phaseData = data
+  });
+  $.ajax({
+    type: "GET",
+    url: "classic_phase_data.json",
+    dataType: "json",
+    success: data => classicPhases = data
   });
 }
 
@@ -28,21 +35,46 @@ function presentResult(data, element) {
   }
 }
 
-function generateRandom(length) {
-  return Math.floor(Math.random() * length) + 1;
+function generateRandomInRange(min, max) {
+  let length = (max - min) + 1;
+  return Math.floor(Math.random() * length) + min;
 }
 
 function getUniqueRandomPhases(numberOfPhases = 10) {
   let randomNumbers = [];
 
   while (randomNumbers.length < numberOfPhases) {
-    let num = generateRandom(phaseData.length);
+    let num = generateRandomInRange(1, phaseData.length);
     if (randomNumbers.indexOf(num) === -1) {
       randomNumbers.push(num);
     }
   }
 
   return randomNumbers.map(num => getPhaseByRank(num));
+}
+
+function getUniqueClassicPhases(numberOfPhases = 10) {
+  let ranks = [];
+
+  while (ranks.length < numberOfPhases) {
+    let origPhase = ranks.length + 1;
+    let startRank = classicPhases.find(
+        phase => phase.OriginalPhase === origPhase).Rank;
+    let num = generateRandomInRange(startRank - 5, startRank + 5);
+    if (ranks.indexOf(num) === -1) {
+      ranks.push(num);
+    }
+  }
+
+  return ranks.map(num => getPhaseByRank(num));
+}
+
+function generateClassic() {
+  let randomClassicPhases = getUniqueClassicPhases();
+
+  presentResult(
+      randomClassicPhases.map(phase => generatePhaseSentence(phase)),
+      $('#generator-result'))
 }
 
 function generateDefault() {
@@ -80,7 +112,7 @@ function generateGoalSentence(type, count) {
   }
   sentence += `<span class="goal-count">${count}</span>`;
   if (type === 'E' || type === 'CE') {
-    if (generateRandom(2) === 1) {
+    if (generateRandomInRange(1, 2) === 1) {
       sentence += " evens";
     } else {
       sentence += " odds";
