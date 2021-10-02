@@ -1,6 +1,17 @@
 let phaseData;
 let classicPhases;
 
+$(document).ready(() => {
+  $("#generate-phases").click(() => {
+    let mode = $("input[name='mode']:checked").val();
+    if (mode === "classic") {
+      generateClassic();
+    } else if (mode === "advanced") {
+      generateDefault();
+    }
+  });
+});
+
 function getData() {
   $.ajax({
     type: "GET",

@@ -21,13 +21,12 @@
 
       <fieldset data-role="controlgroup" data-type="horizontal"><label for="mode-classic">Classic
         Mode</label>
-        <input type="radio" id="mode-classic" name="mode" checked="checked"/>
+        <input type="radio" id="mode-classic" value="classic" name="mode" checked="checked"/>
 
         <label for="mode-advanced">Default Mode</label>
-        <input type="radio" id="mode-advanced" name="mode"/></fieldset>
+        <input type="radio" id="mode-advanced" value="advanced" name="mode"/></fieldset>
 
-      <button class="ui-btn ui-corner-all ui-btn-inline" id="generate-phases"
-              onclick="generateClassic()">Generate Phases
+      <button class="ui-btn ui-corner-all ui-btn-inline" id="generate-phases">Generate Phases
       </button>
     </div>
     <div class="results" id="generator-result"></div>
