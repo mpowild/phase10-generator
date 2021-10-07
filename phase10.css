@@ -2,6 +2,10 @@ body {
   text-align: center;
 }
 
+div.mark {
+  color: yellow;
+}
+
 div.rach {
   color: red;
 }
