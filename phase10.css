@@ -6,6 +6,10 @@ div.mark {
   color: yellow;
 }
 
+div.rach {
+  color: red;
+}
+
 div.goal {
   border: #3389cc 2px solid;
   width: 30%;
