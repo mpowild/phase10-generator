@@ -2,6 +2,10 @@ body {
   text-align: center;
 }
 
+div.mark {
+  color: yellow;
+}
+
 div.goal {
   border: #3389cc 2px solid;
   width: 30%;
