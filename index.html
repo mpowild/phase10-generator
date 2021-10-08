@@ -13,11 +13,65 @@
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
     <script src="phase10.js"></script>
     <link rel="stylesheet" href="phase10.css">
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" enable-background="new 0 0 100 100" xml:space="preserve" style="display: none;">
+      <defs>
+        <symbol id="card-icon-a"  viewBox="0 0 20 30" preserveAspectRatio="xMidYMax meet" version="1.1" aria-labelledby="title desc" role="img">
+            <title id="title">Card</title>
+            <desc id="desc">A red portrait rectangle with rounded corners.</desc>
+        <rect class='card'  />
+        <text class='letter'  x="50%" y="50%">A</text>
+          Sorry, your browser does not support inline SVG.
+        </symbol>
+
+        <symbol id="card-icon-b"  viewBox="0 0 20 30" preserveAspectRatio="xMidYMax meet" version="1.1" aria-labelledby="title desc" role="img">
+            <title id="title">Card</title>
+            <desc id="desc">A red portrait rectangle with rounded corners.</desc>
+        <rect class='card'  />
+        <text class='letter'  x="50%" y="50%">B</text>
+          Sorry, your browser does not support inline SVG.
+        </symbol>
+
+        <symbol id="card-icon-c"  viewBox="0 0 20 30" preserveAspectRatio="xMidYMax meet" version="1.1" aria-labelledby="title desc" role="img">
+            <title id="title">Card</title>
+            <desc id="desc">A red portrait rectangle with rounded corners.</desc>
+        <rect class='card'  />
+        <text class='letter'  x="50%" y="50%">C</text>
+          Sorry, your browser does not support inline SVG.
+        </symbol>
+
+        <symbol id="card-icon-d"  viewBox="0 0 20 30" preserveAspectRatio="xMidYMax meet" version="1.1" aria-labelledby="title desc" role="img">
+            <title id="title">Card</title>
+            <desc id="desc">A red portrait rectangle with rounded corners.</desc>
+        <rect class='card'  />
+        <text class='letter'  x="50%" y="50%">D</text>
+          Sorry, your browser does not support inline SVG.
+        </symbol>
+
+        <symbol id="card-icon-even"  viewBox="0 0 20 30" preserveAspectRatio="xMidYMax meet" version="1.1" aria-labelledby="title desc" role="img">
+            <title id="title">Card</title>
+            <desc id="desc">A red portrait rectangle with rounded corners.</desc>
+        <rect class='card'  />
+        <text class='dots'  x="50%" y="50%">&#10294;</text>
+          Sorry, your browser does not support inline SVG.
+        </symbol>
+
+        <symbol id="card-icon-odd"  viewBox="0 0 20 30" preserveAspectRatio="xMidYMax meet" version="1.1" aria-labelledby="title desc" role="img">
+            <title id="title">Card</title>
+            <desc id="desc">A red portrait rectangle with rounded corners.</desc>
+        <rect class='card'  />
+        <text class='dots'  x="50%" y="50%">&#10262;</text>
+          Sorry, your browser does not support inline SVG.
+        </symbol>
+
+      </defs>
+    </svg>
+
   </head>
   <body>
     <div class="header">
@@ -40,46 +94,41 @@
       <p>This is what the icons mean.</p>
 
         <div class="legend-line">
-          <svg class='icon' viewBox="0 0 20 30" preserveAspectRatio="xMidYMax meet">
-          <rect class='card'  />
-          <text class='letter'  x="50%" y="50%">A</text>
-            Sorry, your browser does not support inline SVG.
+          <svg class="icon-card">
+            <use xlink:href="#card-icon-a"></use>
           </svg>
-          <svg class='icon' viewBox="0 0 20 30" preserveAspectRatio="xMidYMax meet">
-          <rect class='card'  />
-          <text class='letter'  x="50%" y="50%">A</text>
-            Sorry, your browser does not support inline SVG.
+          <svg class="icon-card">
+            <use xlink:href="#card-icon-a"></use>
           </svg>
-          <svg class='icon' viewBox="0 0 20 30" preserveAspectRatio="xMidYMax meet">
-          <rect class='card'  />
-          <text class='letter'  x="50%" y="50%">A</text>
-            Sorry, your browser does not support inline SVG.
+          <svg class="icon-card">
+            <use xlink:href="#card-icon-a"></use>
           </svg>
           <span>= Set of 3</span>
         </div>
 
         <div class="legend-line">
-          <svg class='icon' viewBox="0 0 20 30" preserveAspectRatio="xMidYMax meet">
-          <rect class='card'  />
-          <text class='letter'  x="50%" y="50%">A</text>
-            Sorry, your browser does not support inline SVG.
+          <svg class="icon-card">
+            <use xlink:href="#card-icon-a"></use>
           </svg>
-          <svg class='icon' viewBox="0 0 20 30" preserveAspectRatio="xMidYMax meet">
-          <rect class='card'  />
-          <text class='letter'  x="50%" y="50%">B</text>
-            Sorry, your browser does not support inline SVG.
+          <svg class="icon-card">
+            <use xlink:href="#card-icon-b"></use>
           </svg>
-          <svg class='icon' viewBox="0 0 20 30" preserveAspectRatio="xMidYMax meet">
-          <rect class='card'  />
-          <text class='letter'  x="50%" y="50%">C</text>
-            Sorry, your browser does not support inline SVG.
+          <svg class="icon-card">
+            <use xlink:href="#card-icon-c"></use>
           </svg>
-          <svg class='icon' viewBox="0 0 20 30" preserveAspectRatio="xMidYMax meet">
-          <rect class='card'  />
-          <text class='letter'  x="50%" y="50%">D</text>
-            Sorry, your browser does not support inline SVG.
+          <svg class="icon-card">
+            <use xlink:href="#card-icon-d"></use>
           </svg>
           <span>= Run of 4</span>
+        </div>
+        <div class='legend-line'>
+          <svg class="icon-card">
+            <use xlink:href="#card-icon-even"></use>
+          </svg>
+          <svg class="icon-card">
+            <use xlink:href="#card-icon-odd"></use>
+          </svg>
+          <span>= Even or odd cards</span>
         </div>
     </div>
 
