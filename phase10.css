@@ -2,6 +2,11 @@ body {
   text-align: center;
 }
 
+h1{
+  font-family: 'Kanit', sans-serif;
+  font-weight: 700;
+}
+
 div.mark {
   color: yellow;
 }
@@ -34,4 +39,32 @@ span.goal-count {
   color: red;
   font-size: 120%;
   -webkit-text-stroke: 0.5px black;
+}
+
+div.legend{
+  text-align: left;
+  width:50%;
+  padding-left: 25%;
+
+}
+
+svg.icon{
+width:1rem;
+height:1.5rem;
+}
+
+rect.card{
+fill:red;
+width:20px;
+height:30px;
+rx:3px;
+}
+
+text.letter{
+fill:white;
+font-size:17px;
+font-family:'Kanit', sans-serif;
+font-weight: 400;
+dominant-baseline:middle;
+text-anchor:middle;
 }
