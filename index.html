@@ -16,12 +16,43 @@
     <div class="header">
       <h1>Phase10 Generator</h1>
 
-      <fieldset data-role="controlgroup" data-type="horizontal"><label for="mode-classic">Classic
-        Mode</label>
+      <fieldset data-role="controlgroup" data-type="horizontal">
+        <label for="mode-classic">Classic Mode</label>
         <input type="radio" id="mode-classic" value="classic" name="mode" checked="checked"/>
 
         <label for="mode-advanced">Default Mode</label>
-        <input type="radio" id="mode-advanced" value="advanced" name="mode"/></fieldset>
+        <input type="radio" id="mode-advanced" value="advanced" name="mode"/>
+      </fieldset>
+
+      <div>
+        <fieldset class="ui-grid-a">
+          <div class="ui-block-a">
+            <label for="difficulty">Difficulty Level</label>
+            <select id="difficulty">
+              <option value="1">Super Easy</option>
+              <option value="2">Easy</option>
+              <option value="3" selected="selected">Medium</option>
+              <option value="4">Hard</option>
+              <option value="5">Super Hard</option>
+            </select>
+          </div>
+          <div class="ui-block-b">
+            <label for="phaseCount">Number of Phases</label>
+            <select id="phaseCount">
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+              <option value='5'>5</option>
+              <option value='6'>6</option>
+              <option value='7'>7</option>
+              <option value='8'>8</option>
+              <option value='9'>9</option>
+              <option value='10' selected="selected">10</option>
+            </select>
+          </div>
+        </fieldset>
+      </div>
 
       <button class="ui-btn ui-corner-all ui-btn-inline" id="generate-phases">Generate Phases
       </button>
