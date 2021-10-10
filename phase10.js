@@ -10,6 +10,10 @@ $(document).ready(() => {
       generateDefault();
     }
   });
+
+  let advancedOptions = $("#advanced-options");
+  $("#mode-advanced").click(() => advancedOptions.slideDown(500));
+  $("#mode-classic").click(() => advancedOptions.slideUp(500));
 });
 
 function getData() {
@@ -44,6 +48,9 @@ function presentResult(data, element) {
     html += '</ol>';
     element.html(html);
   }
+
+  console.log("<end>")
+
 }
 
 function generateRandomInRange(min, max) {
@@ -103,8 +110,10 @@ function getPhaseByRank(rank) {
 
 function generatePhaseSentence(phase) {
   let sentence = [];
-  sentence[0] = `<span class="debug-rank" data-rank="${phase.Rank}"></span> ` + generateGoalSentence(phase.Type1,
-      phase.Count1);
+  console.log("phase rank:", phase.Rank);
+  sentence[0] = `<span class="debug-rank" data-rank="${phase.Rank}"></span> `
+      + generateGoalSentence(phase.Type1,
+          phase.Count1);
 
   if (phase.Type2 != null) {
     sentence[1] = generateGoalSentence(phase.Type2, phase.Count2);

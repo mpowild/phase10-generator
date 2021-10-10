@@ -24,11 +24,11 @@
         <input type="radio" id="mode-advanced" value="advanced" name="mode"/>
       </fieldset>
 
-      <div>
+      <div hidden="hidden" id="advanced-options">
         <fieldset class="ui-grid-a">
           <div class="ui-block-a">
             <label for="difficulty">Difficulty Level</label>
-            <select id="difficulty">
+            <select id="difficulty" name="difficulty">
               <option value="1">Super Easy</option>
               <option value="2">Easy</option>
               <option value="3" selected="selected">Medium</option>
@@ -38,7 +38,7 @@
           </div>
           <div class="ui-block-b">
             <label for="phaseCount">Number of Phases</label>
-            <select id="phaseCount">
+            <select id="phaseCount" name="phaseCount">
               <option value='1'>1</option>
               <option value='2'>2</option>
               <option value='3'>3</option>
