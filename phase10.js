@@ -70,13 +70,12 @@ function getUniqueAdvancedPhases() {
     minRank = 1;
     maxRank = phaseData.length;
   } else {
-    let z = difficulty;
-    let l = maximumDifficulty;
-    let p = numberOfPhases;
-    let t = maximumPhases
-    let x = phaseData.length;
-    minRank = ((x / l) * (z - 1)) - (((p - 1) * (t / (t - 1))) * (z - 1));
-    maxRank = ((x / l) * (z)) + (((p - 1) * (t / (t - 1))) * (l - z));
+    minRank = ((phaseData.length / maximumDifficulty) * (difficulty - 1))
+        - (((numberOfPhases - 1) * (maximumPhases / (maximumPhases - 1)))
+            * (difficulty - 1));
+    maxRank = ((phaseData.length / maximumDifficulty) * (difficulty))
+        + (((numberOfPhases - 1) * (maximumPhases / (maximumPhases - 1)))
+            * (maximumDifficulty - difficulty));
   }
 
   let randomNumbers = [];
