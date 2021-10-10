@@ -35,3 +35,8 @@ span.goal-count {
   font-size: 120%;
   -webkit-text-stroke: 0.5px black;
 }
+
+div.max-width {
+  max-width: 50rem;
+  margin: 0 auto;
+}

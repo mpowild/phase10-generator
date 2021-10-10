@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phase10 Generator</title>
-    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
-    <!--    <script-->
-    <!--        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>-->
 
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -16,20 +13,53 @@
     <link rel="stylesheet" href="phase10.css">
   </head>
   <body>
-    <div class="header">
+    <div class="header max-width">
       <h1>Phase10 Generator</h1>
 
-      <fieldset data-role="controlgroup" data-type="horizontal"><label for="mode-classic">Classic
-        Mode</label>
+      <label for="mode-fieldset">Mode</label>
+      <fieldset id="mode-fieldset" data-role="controlgroup" data-type="horizontal">
+        <label for="mode-classic">Classic</label>
         <input type="radio" id="mode-classic" value="classic" name="mode" checked="checked"/>
 
-        <label for="mode-advanced">Default Mode</label>
-        <input type="radio" id="mode-advanced" value="advanced" name="mode"/></fieldset>
+        <label for="mode-advanced">'Outside The Box'</label>
+        <input type="radio" id="mode-advanced" value="advanced" name="mode"/>
+      </fieldset>
+
+      <div hidden="hidden" id="advanced-options">
+        <fieldset class="ui-grid-a">
+          <div class="ui-block-a">
+            <label for="difficulty">Difficulty Level</label>
+            <select id="difficulty" name="difficulty">
+              <option value="1">Super Easy</option>
+              <option value="2">Easy</option>
+              <option value="3" selected="selected">Medium</option>
+              <option value="4">Hard</option>
+              <option value="5">Super Hard</option>
+              <option value="all-ranks">Totally Random!</option>
+            </select>
+          </div>
+          <div class="ui-block-b">
+            <label for="phaseCount">Number of Phases</label>
+            <select id="phaseCount" name="phaseCount">
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+              <option value='5'>5</option>
+              <option value='6'>6</option>
+              <option value='7'>7</option>
+              <option value='8'>8</option>
+              <option value='9'>9</option>
+              <option value='10' selected="selected">10</option>
+            </select>
+          </div>
+        </fieldset>
+      </div>
 
       <button class="ui-btn ui-corner-all ui-btn-inline" id="generate-phases">Generate Phases
       </button>
     </div>
-    <div class="results" id="generator-result"></div>
+    <div class="results max-width" id="generator-result"></div>
     <div class="footer">
       <div style="font-weight: bold; margin: 1rem;">** work in progress **</div>
       <a href="https://neocities.org/" target="_blank"><img src="neocities.png"
