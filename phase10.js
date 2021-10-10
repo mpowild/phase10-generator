@@ -103,7 +103,7 @@ function getPhaseByRank(rank) {
 
 function generatePhaseSentence(phase) {
   let sentence = [];
-  sentence[0] = `{${phase.Rank}} ` + generateGoalSentence(phase.Type1,
+  sentence[0] = `<span class="debug-rank" data-rank="${phase.Rank}"></span> ` + generateGoalSentence(phase.Type1,
       phase.Count1);
 
   if (phase.Type2 != null) {
