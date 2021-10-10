@@ -16,11 +16,12 @@
     <div class="header max-width">
       <h1>Phase10 Generator</h1>
 
-      <fieldset data-role="controlgroup" data-type="horizontal">
-        <label for="mode-classic">Classic Mode</label>
+      <label for="mode-fieldset">Mode</label>
+      <fieldset id="mode-fieldset" data-role="controlgroup" data-type="horizontal">
+        <label for="mode-classic">Classic</label>
         <input type="radio" id="mode-classic" value="classic" name="mode" checked="checked"/>
 
-        <label for="mode-advanced">Default Mode</label>
+        <label for="mode-advanced">'Outside The Box'</label>
         <input type="radio" id="mode-advanced" value="advanced" name="mode"/>
       </fieldset>
 
@@ -34,6 +35,7 @@
               <option value="3" selected="selected">Medium</option>
               <option value="4">Hard</option>
               <option value="5">Super Hard</option>
+              <option value="all-ranks">Totally Random!</option>
             </select>
           </div>
           <div class="ui-block-b">

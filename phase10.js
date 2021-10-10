@@ -1,3 +1,6 @@
+const maximumPhases = 10;
+const maximumDifficulty = 5;
+
 let phaseData;
 let classicPhases;
 
@@ -7,7 +10,7 @@ $(document).ready(() => {
     if (mode === "classic") {
       generateClassic();
     } else if (mode === "advanced") {
-      generateDefault();
+      generateAdvanced();
     }
   });
 
@@ -50,12 +53,42 @@ function presentResult(data, element) {
   }
 
   console.log("<end>")
-
 }
 
 function generateRandomInRange(min, max) {
   let length = (max - min) + 1;
   return Math.floor(Math.random() * length) + min;
+}
+
+function getUniqueAdvancedPhases() {
+  let difficulty = $("#difficulty option:checked").val();
+  let numberOfPhases = $("#phaseCount option:checked").val();
+
+  let minRank;
+  let maxRank;
+  if (difficulty === "all-ranks") {
+    minRank = 1;
+    maxRank = phaseData.length;
+  } else {
+    let z = difficulty;
+    let l = maximumDifficulty;
+    let p = numberOfPhases;
+    let t = maximumPhases
+    let x = phaseData.length;
+    minRank = ((x / l) * (z - 1)) - (((p - 1) * (t / (t - 1))) * (z - 1));
+    maxRank = ((x / l) * (z)) + (((p - 1) * (t / (t - 1))) * (l - z));
+  }
+
+  let randomNumbers = [];
+
+  while (randomNumbers.length < numberOfPhases) {
+    let num = generateRandomInRange(minRank, maxRank);
+    if (randomNumbers.indexOf(num) === -1) {
+      randomNumbers.push(num);
+    }
+  }
+
+  return randomNumbers.map(num => getPhaseByRank(num));
 }
 
 function getUniqueRandomPhases(numberOfPhases = 10) {
@@ -95,8 +128,8 @@ function generateClassic() {
       $('#generator-result'))
 }
 
-function generateDefault() {
-  let randomTenPhases = getUniqueRandomPhases();
+function generateAdvanced() {
+  let randomTenPhases = getUniqueAdvancedPhases();
   randomTenPhases.sort((a, b) => a.Rank - b.Rank);
 
   presentResult(
