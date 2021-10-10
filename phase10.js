@@ -1,3 +1,6 @@
+const maximumPhases = 10;
+const maximumDifficulty = 5;
+
 let phaseData;
 let classicPhases;
 
@@ -7,9 +10,13 @@ $(document).ready(() => {
     if (mode === "classic") {
       generateClassic();
     } else if (mode === "advanced") {
-      generateDefault();
+      generateAdvanced();
     }
   });
+
+  let advancedOptions = $("#advanced-options");
+  $("#mode-advanced").click(() => advancedOptions.slideDown(500));
+  $("#mode-classic").click(() => advancedOptions.slideUp(500));
 });
 
 function getData() {
@@ -44,11 +51,44 @@ function presentResult(data, element) {
     html += '</ol>';
     element.html(html);
   }
+
+  console.log("<end>")
 }
 
 function generateRandomInRange(min, max) {
   let length = (max - min) + 1;
   return Math.floor(Math.random() * length) + min;
+}
+
+function getUniqueAdvancedPhases() {
+  let difficulty = $("#difficulty option:checked").val();
+  let numberOfPhases = $("#phaseCount option:checked").val();
+
+  let minRank;
+  let maxRank;
+  if (difficulty === "all-ranks") {
+    minRank = 1;
+    maxRank = phaseData.length;
+  } else {
+    minRank = Math.round(((phaseData.length / maximumDifficulty) * (difficulty
+        - 1))
+        - (((numberOfPhases - 1) * (maximumPhases / (maximumPhases - 1)))
+            * (difficulty - 1)));
+    maxRank = Math.round(((phaseData.length / maximumDifficulty) * (difficulty))
+        + (((numberOfPhases - 1) * (maximumPhases / (maximumPhases - 1)))
+            * (maximumDifficulty - difficulty)));
+  }
+
+  let randomNumbers = [];
+
+  while (randomNumbers.length < numberOfPhases) {
+    let num = generateRandomInRange(minRank, maxRank);
+    if (randomNumbers.indexOf(num) === -1) {
+      randomNumbers.push(num);
+    }
+  }
+
+  return randomNumbers.map(num => getPhaseByRank(num));
 }
 
 function getUniqueRandomPhases(numberOfPhases = 10) {
@@ -88,8 +128,8 @@ function generateClassic() {
       $('#generator-result'))
 }
 
-function generateDefault() {
-  let randomTenPhases = getUniqueRandomPhases();
+function generateAdvanced() {
+  let randomTenPhases = getUniqueAdvancedPhases();
   randomTenPhases.sort((a, b) => a.Rank - b.Rank);
 
   presentResult(
@@ -103,8 +143,10 @@ function getPhaseByRank(rank) {
 
 function generatePhaseSentence(phase) {
   let sentence = [];
-  sentence[0] = `{${phase.Rank}} ` + generateGoalSentence(phase.Type1,
-      phase.Count1);
+  console.log("phase rank:", phase.Rank);
+  sentence[0] = `<span class="debug-rank" data-rank="${phase.Rank}"></span> `
+      + generateGoalSentence(phase.Type1,
+          phase.Count1);
 
   if (phase.Type2 != null) {
     sentence[1] = generateGoalSentence(phase.Type2, phase.Count2);
